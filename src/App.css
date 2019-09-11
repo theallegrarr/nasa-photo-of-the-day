@@ -65,3 +65,17 @@ img, .text-content {
 img {
   width: 25%;
 }
+
+.date {
+  display: flex;
+  flex-direction: row;
+  width: 10%;
+  font-weight: 900;
+}
+
+input {
+  border: 1px solid #61dafb;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 900;
+}

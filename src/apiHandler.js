@@ -4,7 +4,6 @@ import axios from 'axios';
 import './App.css';
 
 const shotsApi = 'https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo';
-
 const fdata = {
     copyright: "Bray Falls",
     date: "2019-09-11",
@@ -16,16 +15,21 @@ const fdata = {
     url: "https://apod.nasa.gov/apod/image/1909/HeartNebula_Falls_960.jpg"
 }
 
-function GetData() {
+function GetData(props) {
+  
   const [shots, setShots] = useState({});
 
+  const [date, setDate] = useState({ startDate: '2019-9-11' });
+  const shotLink = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date.startDate}`;
+
+
   useEffect(() => {
-    const shotsPromise = axios.get(shotsApi);
+    const shotsPromise = axios.get(shotLink);
     
     Promise.all([shotsPromise])
       .then(data => {
           //debugger
-          console.log(data);
+          
         setShots({
             copyright: data[0].data.copyright,
             date: data[0].data.date,
@@ -37,11 +41,20 @@ function GetData() {
             url: data[0].data.url, 
         })
       })
-  }, [])
+  }, [date, shots])
 
   
 
   return (
+    <>
+    <form className="date">
+        Date:   
+        <input type="date" onChange={(event) => {
+                setDate({startDate: event.target.value})}
+            }>
+        </input>
+    </form>
+
     <div className="data-card">
         <img className='image' src={shots.url}></img>
         <div className="text-content">
@@ -51,6 +64,7 @@ function GetData() {
             <p>{shots.explanation}</p>
         </div>
     </div>
+    </>
   );
 }
 
