@@ -1,6 +1,6 @@
 import React from "react";
 import Header from './header.jsx';
-import ImageCard from './imageCard.jsx';
+import ImageCard from './apiHandler.js';
 import "./App.css";
 
 function App() {
