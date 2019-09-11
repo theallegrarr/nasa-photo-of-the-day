@@ -8,15 +8,16 @@
   pointer-events: none;
 }
 
-.App-header {
+.App-header, .header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 6vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  box-shadow: 0.5px 5px 5px #282c34;
 }
 
 .App-link {
@@ -30,4 +31,37 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.data-card {
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  padding: 1%;
+  align-self: center;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #282c34;
+  color: white;
+  background-blend-mode: overlay;
+}
+
+h4 {
+  font-style: italic;
+}
+h3 {
+  color: #61dafb;
+}
+
+img, .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  width: 70%;
+  text-align: left;
+}
+
+img {
+  width: 25%;
 }
