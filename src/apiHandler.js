@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // step 1: bring axios!
 import axios from 'axios';
-import './App.css';
+import styled from 'styled-components';
 
-const shotsApi = 'https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo';
+const shotsApi = '';
 const fdata = {
     copyright: "Bray Falls",
     date: "2019-09-11",
@@ -14,6 +14,59 @@ const fdata = {
     title: "IC 1805: The Heart Nebula",
     url: "https://apod.nasa.gov/apod/image/1909/HeartNebula_Falls_960.jpg"
 }
+
+/////////STYLED CARD
+const StyledCard = styled.div`
+        display: flex;
+        flex-direction: row;
+        width: 98%;
+        padding: 1%;
+        align-self: center;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #282c34;
+        color: white;
+        background-blend-mode: overlay;
+
+    h4 {
+        font-style: italic;
+    }
+    h3 {
+        color: #61dafb;
+    }
+
+    img, .text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        width: 70%;
+        text-align: left;
+    }
+
+    img {
+        width: 25%;
+    }
+
+`
+
+/////////// FORM STYLE
+const StyledForm = styled.form`
+    .date {
+        display: flex;
+        flex-direction: row;
+        width: 10%;
+        font-weight: 900;
+    }
+
+    input {
+        border: 1px solid #61dafb;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: 900;
+    }
+`
+
 
 function GetData(props) {
   
@@ -40,6 +93,7 @@ function GetData(props) {
             title: data[0].data.title,
             url: data[0].data.url, 
         })
+        //if(!data)setShots(fdata);
       })
   }, [date, shots])
 
@@ -47,15 +101,15 @@ function GetData(props) {
 
   return (
     <>
-    <form className="date">
+    <StyledForm>
         Date:   
         <input type="date" onChange={(event) => {
                 setDate({startDate: event.target.value})}
             }>
         </input>
-    </form>
+    </StyledForm>
 
-    <div className="data-card">
+    <StyledCard>
         <img className='image' src={shots.url}></img>
         <div className="text-content">
             <h1>Title: {shots.title}</h1>
@@ -63,7 +117,7 @@ function GetData(props) {
             <h4>Date: {shots.date}</h4>
             <p>{shots.explanation}</p>
         </div>
-    </div>
+    </StyledCard>
     </>
   );
 }
