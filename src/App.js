@@ -1,14 +1,25 @@
 import React from "react";
-import "./App.css";
+import Header from './header.jsx';
+import ImageCard from './apiHandler.js';
+import styled from 'styled-components';
+
+
+const StyledMain = styled.div`
+  text-align: center;
+`
 
 function App() {
+  const date = document.querySelector('input');
+  console.log(date);
+
   return (
-    <div className="App">
+    <StyledMain>
+      <Header />
       <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
+        A fun way to see all the cool shots from NASA
       </p>
-    </div>
+      <ImageCard />
+    </StyledMain>
   );
 }
 
